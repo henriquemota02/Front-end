@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js%22%3E"></script> 
+    </head>
+
+
+    <div id="app">
+      <p>{{title}}</p>
+      <h3>Lista de Tarefas</h3>
+      <input v-model="novatarefa" placeholder="Insira a nova tarefa">
+      <button @click="tarefas.push(novatarefa)">Inserir</button>
+      <ul>
+          <li v-for="tarefa in tarefas": class="{realizada:item.realizada, priotario:tarefa.priotario}">
+              {{tarefa.Nome}}
+          </li>
+      </ul>
+  </div>
+</body>
+
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        title: "hello world",
+        tarefa: "",
+        tarefas: [{Nome:'Exercicio HTML', prioritario: false, realizada: false}, {},
+        {Nome:'Exercicio JS', prioritario: false, realizada: false},
+        {Nome:'Exercicio Phy', prioritario: false, realizada: false},
+        {Nome:'Exercicio C++', prioritario: false, realizada: false},
+      ]
+
+      },
+      methods: {
+        inseretarefa: function(){
+          if (this.novatarefa){
+            this.tarefa.push({
+              Nome: this.novatarefa,
+              prioritario: false,
+              realizada: false
+            })
+            this.novatarefa=''
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .realizada{
+      text-decoration: line-through black;
+      color: gray;
+    }
+    .priotario{
+      text-decoration: line-through red;
+      color: green;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</html>
